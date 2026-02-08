@@ -108,7 +108,7 @@ const Navbar = ({ theme, toggleTheme }) => {
       <div className="nav-container" style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
         {/* Logo Section */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 1, minWidth: 0 }} onClick={() => scrollTo('home')}>
-          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '42px' : '52px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease', flexShrink: 0 }} />
+          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '42px' : '52px', width: 'auto', mixBlendMode: theme === 'dark' ? 'screen' : 'multiply', filter: theme === 'dark' ? 'invert(1) brightness(1.5)' : 'none', transition: 'all 0.3s ease', flexShrink: 0 }} />
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1', transition: 'all 0.3s ease' }}>
             <h1 className="nav-brand-text" style={{ fontSize: scrolled ? '1.1rem' : '1.35rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', color: 'var(--primary)', textTransform: 'uppercase' }}>Erudite</h1>
             <span className="nav-sub-text" style={{ fontSize: scrolled ? '0.55rem' : '0.65rem', fontWeight: '600', letterSpacing: scrolled ? '1.5px' : '2px', color: 'var(--secondary)', textTransform: 'uppercase', marginTop: '2px' }}>International</span>
@@ -725,7 +725,7 @@ const WhatsAppButton = () => (
 );
 
 export default function App() {
-  const [theme, setTheme] = React.useState('light');
+  const [theme, setTheme] = React.useState('dark');
 
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
