@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X, Bell, Smartphone, Calendar, CheckCircle } from 'lucide-react';
 import './index.css';
 import logo from './assets/logo.jpg';
-import appMockup from '/Users/pranjalrathod/.gemini/antigravity/brain/9194fa81-fc12-4e8b-a329-8698c996c8c8/edupro_app_mockup_1770535209187.png';
+import appMockup from './assets/edupro_mockup.png';
 
 const StaggeredText = ({ text, style, delay = 0 }) => {
   const words = text.split(' ');
