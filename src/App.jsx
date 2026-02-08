@@ -102,11 +102,11 @@ const Navbar = () => {
         border: '1px solid rgba(255,255,255,0.3)'
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
+      <div className="nav-container" style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
         {/* Logo Section */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 0 }} onClick={() => scrollTo('home')}>
-          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '40px' : '50px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease' }} />
-          <h1 style={{ fontSize: scrolled ? '1.1rem' : '1.25rem', margin: 0, fontWeight: '700', letterSpacing: '1px', transition: 'all 0.3s ease' }}>Erudite International</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 1, minWidth: 0 }} onClick={() => scrollTo('home')}>
+          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '40px' : '50px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease', flexShrink: 0 }} />
+          <h1 className="nav-brand-text" style={{ fontSize: scrolled ? '1.1rem' : '1.25rem', margin: 0, fontWeight: '700', letterSpacing: '1px', transition: 'all 0.3s ease', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Erudite International</h1>
         </div>
 
         {/* Desktop Nav Links - centered */}

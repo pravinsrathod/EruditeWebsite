@@ -359,6 +359,14 @@ section {
     grid-column: span 1 !important;
     grid-row: span 1 !important;
   }
+
+  .nav-brand-text {
+    font-size: 1rem !important;
+  }
+
+  .nav-container {
+    padding-right: 4rem !important;
+  }
 }
 
 .mobile-menu-btn {
