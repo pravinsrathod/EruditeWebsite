@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X } from 'lucide-react';
 import './index.css';
-import './index.css';
+import logo from './assets/logo.jpg';
 
 const StaggeredText = ({ text, style, delay = 0 }) => {
   const words = text.split(' ');
@@ -105,7 +105,7 @@ const Navbar = () => {
       <div style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
         {/* Logo Section */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 0 }} onClick={() => scrollTo('home')}>
-          <img src="/src/assets/logo.jpg" alt="Erudite Logo" style={{ height: scrolled ? '40px' : '50px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease' }} />
+          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '40px' : '50px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease' }} />
           <h1 style={{ fontSize: scrolled ? '1.1rem' : '1.25rem', margin: 0, fontWeight: '700', letterSpacing: '1px', transition: 'all 0.3s ease' }}>Erudite International</h1>
         </div>
 
@@ -539,7 +539,7 @@ const Footer = () => (
       <div className="flex-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem', marginBottom: '3rem', flexWrap: 'wrap', gap: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ background: 'white', padding: '0.5rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
-            <img src="/src/assets/logo.jpg" alt="Erudite Logo" style={{ height: '40px', width: 'auto' }} />
+            <img src={logo} alt="Erudite Logo" style={{ height: '40px', width: 'auto' }} />
           </div>
           <h1 style={{ color: 'white', fontSize: '1.5rem', margin: 0, fontWeight: '700', letterSpacing: '1px' }}>Erudite International</h1>
         </div>
