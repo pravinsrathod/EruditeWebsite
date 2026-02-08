@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X, Bell, Smartphone, Calendar, CheckCircle } from 'lucide-react';
+import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X, Bell, Smartphone, Calendar, CheckCircle, Moon, Sun } from 'lucide-react';
 import './index.css';
 import logo from './assets/logo.jpg';
 import appMockup from './assets/edupro_mockup.png';
@@ -54,7 +54,7 @@ const BentoCard = ({ children, className, span, ...props }) => {
   );
 };
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
 
@@ -96,8 +96,9 @@ const Navbar = () => {
         right: '2rem',
         zIndex: 1000,
         padding: scrolled ? '0.75rem 2rem' : '1rem 2.5rem',
-        background: 'rgba(253, 252, 240, 0.9)',
+        background: 'var(--glass)',
         backdropFilter: 'blur(20px)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '50px',
         boxShadow: scrolled ? '0 10px 40px rgba(0,0,0,0.1)' : '0 5px 20px rgba(0,0,0,0.05)',
         transition: 'all 0.3s ease',
@@ -140,7 +141,27 @@ const Navbar = () => {
         </div>
 
         {/* Always Visible Button on Desktop - Absolutely Positioned */}
-        <button className="btn btn-primary desktop-nav" style={{ position: 'absolute', right: scrolled ? '2rem' : '2.5rem', padding: '0.75rem 1.5rem', fontSize: '1rem', whiteSpace: 'nowrap', letterSpacing: '0.02em' }} onClick={() => scrollTo('contact')}>Enroll Now</button>
+        {/* Right Side Actions */}
+        <div className="desktop-nav" style={{ position: 'absolute', right: scrolled ? '2rem' : '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: 'var(--bg-subtle)',
+              border: '1px solid var(--primary)',
+              color: 'var(--primary)',
+              cursor: 'pointer',
+              padding: '0.5rem',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
+          <button className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', fontSize: '1rem', whiteSpace: 'nowrap', letterSpacing: '0.02em' }} onClick={() => scrollTo('contact')}>Enroll Now</button>
+        </div>
 
         {/* Mobile Menu Button */}
         <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)} style={{ position: 'absolute', right: scrolled ? '2rem' : '2.5rem' }}>
@@ -161,6 +182,24 @@ const Navbar = () => {
               <span key={link.id} onClick={() => (scrollTo(link.id), setIsOpen(false))} className={link.id === 'app' ? 'glitter-text' : ''}>{link.label}</span>
             ))}
             <button className="btn btn-primary" onClick={() => scrollTo('contact')}>Enroll Now</button>
+            <button
+              onClick={toggleTheme}
+              style={{
+                background: 'none',
+                border: '1px solid var(--primary)',
+                color: 'var(--primary)',
+                cursor: 'pointer',
+                padding: '0.75rem',
+                borderRadius: '50px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontSize: '1rem',
+                fontWeight: '600'
+              }}
+            >
+              {theme === 'light' ? <><Moon size={20} /> Dark Mode</> : <><Sun size={20} /> Light Mode</>}
+            </button>
           </motion.div>
         )}
       </div>
@@ -178,7 +217,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, #FDFCF0 0%, #E2E8F0 100%)', position: 'relative', overflow: 'hidden', padding: '8rem 0 4rem 0' }}>
+    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%)', position: 'relative', overflow: 'hidden', padding: '8rem 0 4rem 0' }}>
       <div className="container hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -231,7 +270,7 @@ const Hero = () => {
 };
 
 const Features = () => (
-  <section id="about" style={{ background: 'var(--white)' }}>
+  <section id="about" style={{ background: 'var(--bg-cream)' }}>
     <div className="container">
       <div className="section-title">
         <h2>Expertise in Excellence</h2>
@@ -239,9 +278,9 @@ const Features = () => (
       </div>
       <div className="grid-3">
         {[
-          { icon: <BookOpen />, title: "Holistic Learning", desc: "A balanced approach to academic, social, and emotional development." },
-          { icon: <Users />, title: "Expert Educators", desc: "Qualified staff dedicated to nurturing young minds with care." },
-          { icon: <Star />, title: "Character Building", desc: "Focusing on resilience, empathy, and strong moral values." }
+          { icon: <BookOpen />, title: "Holistic Learning", desc: "A balanced approach to academic, social, and emotional development.", color: "var(--vibrant-blue)", bg: "var(--bg-feature-blue)" },
+          { icon: <Users />, title: "Expert Educators", desc: "Qualified staff dedicated to nurturing young minds with care.", color: "var(--vibrant-orange)", bg: "var(--bg-feature-orange)" },
+          { icon: <Star />, title: "Character Building", desc: "Focusing on resilience, empathy, and strong moral values.", color: "var(--vibrant-purple)", bg: "var(--bg-feature-purple)" }
         ].map((f, i) => (
           <motion.div
             key={i}
@@ -249,14 +288,23 @@ const Features = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.2 }}
-            whileHover={{ y: -10 }}
+            whileHover={{ y: -10, boxShadow: `0 20px 40px -10px ${f.color}40` }}
             className="glass-card"
-            style={{ textAlign: 'center' }}
+            style={{ textAlign: 'center', borderTop: `4px solid ${f.color}` }}
           >
-            <div style={{ color: 'var(--primary)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
-              {React.cloneElement(f.icon, { size: 48 })}
+            <div style={{
+              color: f.color,
+              background: f.bg,
+              marginBottom: '1.5rem',
+              display: 'inline-flex',
+              padding: '1.5rem',
+              borderRadius: '50%',
+              justifyContent: 'center',
+              boxShadow: `0 10px 20px ${f.color}30`
+            }}>
+              {React.cloneElement(f.icon, { size: 40 })}
             </div>
-            <h3 style={{ marginBottom: '1rem' }}>{f.title}</h3>
+            <h3 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>{f.title}</h3>
             <p style={{ color: 'var(--text-light)' }}>{f.desc}</p>
           </motion.div>
         ))}
@@ -267,10 +315,10 @@ const Features = () => (
 
 const Programs = () => {
   const programs = [
-    { title: "Pre-Primary", desc: "Hands-on learning and social discovery for our youngest stars.", image: "https://erudite.edu.my/wp-content/uploads/2023/09/PHOTO-2023-07-21-11-42-47.jpg" },
-    { title: "Lower Primary", desc: "Building strong foundations in literacy, numeracy, and creative thinking.", image: "https://erudite.edu.my/wp-content/uploads/2022/04/228172ac-0642-4ac2-8a7b-33386aa1ad73.jpg" },
-    { title: "Upper Primary", desc: "Progressive curriculum designed to nurture leadership and deeper inquiry.", image: "https://erudite.edu.my/wp-content/uploads/2022/04/3c8db26a-2ccb-4055-ba42-53c17d8e7340.jpg" },
-    { title: "Secondary / IGCSE", desc: "Global standards preparing students for international success and beyond.", image: "https://erudite.edu.my/wp-content/uploads/2024/02/PHOTO-2024-02-25-22-03-38-300x200.jpg" }
+    { title: "Pre-Primary", desc: "Hands-on learning and social discovery for our youngest stars.", image: "https://erudite.edu.my/wp-content/uploads/2023/09/PHOTO-2023-07-21-11-42-47.jpg", color: "linear-gradient(135deg, #4facfe, #00f2fe)" },
+    { title: "Lower Primary", desc: "Building strong foundations in literacy, numeracy, and creative thinking.", image: "https://erudite.edu.my/wp-content/uploads/2022/04/228172ac-0642-4ac2-8a7b-33386aa1ad73.jpg", color: "linear-gradient(135deg, #f6d365, #fda085)" },
+    { title: "Upper Primary", desc: "Progressive curriculum designed to nurture leadership and deeper inquiry.", image: "https://erudite.edu.my/wp-content/uploads/2022/04/3c8db26a-2ccb-4055-ba42-53c17d8e7340.jpg", color: "linear-gradient(135deg, #84fab0, #8fd3f4)" },
+    { title: "Secondary / IGCSE", desc: "Global standards preparing students for international success and beyond.", image: "https://erudite.edu.my/wp-content/uploads/2024/02/PHOTO-2024-02-25-22-03-38-300x200.jpg", color: "linear-gradient(135deg, #a18cd1, #fbc2eb)" }
   ];
 
   return (
@@ -299,8 +347,10 @@ const Programs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              style={{ overflow: 'hidden', borderRadius: '32px', position: 'relative', height: '350px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              style={{ overflow: 'hidden', borderRadius: '32px', position: 'relative', height: '350px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', border: '4px solid white' }}
             >
+              <div style={{ position: 'absolute', inset: 0, padding: '4px', background: p.color, zIndex: -1 }}></div>
               <img src={p.image} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,54,93,0.9), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '2.5rem' }}>
                 <h3 style={{ color: 'white', marginBottom: '0.75rem', fontSize: '1.8rem' }}>{p.title}</h3>
@@ -316,7 +366,7 @@ const Programs = () => {
 };
 
 const Activity = () => (
-  <section id="activity" style={{ background: '#f8fafc' }}>
+  <section id="activity" style={{ background: 'var(--bg-subtle)' }}>
     <div className="container">
       <div className="section-title">
         <h2>Holistic Activities</h2>
@@ -404,7 +454,7 @@ const Gallery = () => {
 };
 
 const EduProApp = () => (
-  <section id="app" style={{ background: '#f8fafc', overflow: 'hidden' }}>
+  <section id="app" style={{ background: 'var(--bg-subtle)', overflow: 'hidden' }}>
     <div className="container">
       <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
         <motion.div
@@ -416,7 +466,7 @@ const EduProApp = () => (
             <Smartphone size={16} /> <span>Now Available</span>
           </div>
           <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '1.5rem', lineHeight: '1.1' }}>Stay Connected with <span style={{ color: 'var(--secondary)' }}>EduPro</span></h2>
-          <p style={{ fontSize: '1.1rem', color: '#64748b', marginBottom: '2.5rem' }}>Our multi-tenant parent portal brings your child's educational journey to your fingertips. Download our mobile app on Android and iOS for seamless monitoring.</p>
+          <p style={{ fontSize: '1.1rem', color: 'var(--text-light)', marginBottom: '2.5rem' }}>Our multi-tenant parent portal brings your child's educational journey to your fingertips. Download our mobile app on Android and iOS for seamless monitoring.</p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {[
@@ -428,7 +478,7 @@ const EduProApp = () => (
                 <div style={{ background: 'white', padding: '0.75rem', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>{item.icon}</div>
                 <div>
                   <h4 style={{ color: 'var(--primary)', marginBottom: '0.25rem' }}>{item.title}</h4>
-                  <p style={{ color: '#64748b', fontSize: '0.95rem' }}>{item.text}</p>
+                  <p style={{ color: 'var(--text-light)', fontSize: '0.95rem' }}>{item.text}</p>
                 </div>
               </div>
             ))}
@@ -498,7 +548,7 @@ const Branches = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              style={{ background: '#f8fafc', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}
+              style={{ background: 'var(--bg-subtle)', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}
             >
               <div style={{ height: '250px', background: '#e2e8f0' }}>
                 <iframe
@@ -616,7 +666,7 @@ const Contact = () => {
 };
 
 const Footer = () => (
-  <footer style={{ padding: '4rem 0', background: '#0D1B2A', color: 'white' }}>
+  <footer style={{ padding: '4rem 0', background: 'var(--footer-bg)', color: 'white' }}>
     <div className="container">
       <div className="flex-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem', marginBottom: '3rem', flexWrap: 'wrap', gap: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -675,9 +725,17 @@ const WhatsAppButton = () => (
 );
 
 export default function App() {
+  const [theme, setTheme] = React.useState('light');
+
+  React.useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+
   return (
     <div>
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <Features />
       <Programs />

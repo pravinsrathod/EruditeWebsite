@@ -9,6 +9,47 @@
   --white: #FFFFFF;
   --glass: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.3);
+
+  /* New Vibrant Palette */
+  --vibrant-blue: #4facfe;
+  --vibrant-purple: #a18cd1;
+  --vibrant-yellow: #f6d365;
+  --vibrant-orange: #fda085;
+  --vibrant-green: #84fab0;
+  --vibrant-teal: #8fd3f4;
+  --vibrant-pink: #ff9a9e;
+  --vibrant-red: #fecfef;
+
+  /* Refactored BG vars */
+  --bg-gradient-start: #FDFCF0;
+  --bg-gradient-end: #E2E8F0;
+  --bg-subtle: #f8fafc;
+  --bg-feature-blue: #e0f2fe;
+  --bg-feature-orange: #ffedd5;
+  --bg-feature-purple: #f3e8ff;
+  --footer-bg: #0D1B2A;
+  --card-bg: #FFFFFF;
+}
+
+[data-theme='dark'] {
+  --bg-cream: #0f172a;
+  --bg-gradient-start: #0f172a;
+  --bg-gradient-end: #1e293b;
+  --bg-subtle: #111827;
+  --text-dark: #f1f5f9;
+  --text-light: #cbd5e1;
+  --white: #e2e8f0;
+  /* Text on primary buttons remains light */
+  --card-bg: #1e293b;
+  --glass: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --primary: #38bdf8;
+  --secondary: #fbbf24;
+  --footer-bg: #020617;
+
+  --bg-feature-blue: rgba(56, 189, 248, 0.15);
+  --bg-feature-orange: rgba(251, 191, 36, 0.15);
+  --bg-feature-purple: rgba(192, 132, 252, 0.15);
 }
 
 /* Noise Texture Overlay */
@@ -61,14 +102,18 @@ body::after {
 body::before {
   top: -20%;
   left: -10%;
-  background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(253, 160, 133, 0.2) 0%, rgba(246, 211, 101, 0.15) 50%, transparent 70%);
   animation: float-slow 25s infinite alternate ease-in-out;
 }
 
 body::after {
   bottom: -20%;
   right: -10%;
-  background: radial-gradient(circle, rgba(26, 54, 93, 0.1) 0%, transparent 70%);
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(161, 140, 209, 0.15) 0%, rgba(251, 194, 235, 0.15) 50%, transparent 70%);
   animation: float-slow 30s infinite alternate-reverse ease-in-out;
 }
 
@@ -114,9 +159,9 @@ h4 {
 
 .glass-card {
   background: var(--glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   background-clip: padding-box;
   position: relative;
   border-radius: 20px;
@@ -249,6 +294,30 @@ section {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.05);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--vibrant-blue), var(--vibrant-purple));
+  z-index: 10;
+}
+
+.bento-card:nth-child(2n)::before {
+  background: linear-gradient(90deg, var(--vibrant-orange), var(--vibrant-yellow));
+}
+
+.bento-card:nth-child(3n)::before {
+  background: linear-gradient(90deg, var(--vibrant-green), var(--vibrant-teal));
+}
+
+.bento-card:nth-child(4n)::before {
+  background: linear-gradient(90deg, var(--vibrant-pink), var(--vibrant-red));
 }
 
 .bento-card:hover {
