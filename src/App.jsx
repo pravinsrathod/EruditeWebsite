@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X, Bell, Smartphone, Calendar, CheckCircle, Moon, Sun } from 'lucide-react';
+import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X, Bell, Smartphone, Calendar, CheckCircle, Moon, Sun, Quote } from 'lucide-react';
 import './index.css';
 import logo from './assets/logo.jpg';
 import appMockup from './assets/edupro_mockup.png';
@@ -26,6 +26,173 @@ const StaggeredText = ({ text, style, delay = 0 }) => {
         </motion.span>
       ))}
     </h1>
+  );
+};
+
+const LeadershipMessages = () => {
+  const messages = [
+    {
+      role: "Founder",
+      header: "Message from the Founder",
+      name: "Founder of Erudite",
+      text: [
+        "Welcome to Erudite International. Dear Students, Parents, and Well-Wishers,",
+        "It is with great pride and joy that I welcome you to ERUDITE. Our institution was founded with a vision to nurture young minds, inspire curiosity, and cultivate a lifelong love for learning.",
+        "At ERUDITE, we believe that education extends beyond textbooks—it is about developing character, resilience, and the ability to think critically. Our dedicated faculty and staff are committed to providing a supportive and enriching environment where every child can reach their full potential.",
+        "As we continue to grow, our mission remains the same: to create a dynamic learning space that fosters creativity, innovation, and excellence. Together, let us shape the future, one student at a time."
+      ]
+    },
+    {
+      role: "KL Branch",
+      header: "Message from KL Branch Principal",
+      name: "Remala Nagaratnam",
+      title: "Principal, KL Branch",
+      text: [
+        "Warm greetings to all students, parents, and visitors.",
+        "At our school, we believe education is not only about academic excellence but also about shaping good character, discipline, and respect for one another. Every child entrusted to us is special, and it is our responsibility to guide them towards becoming confident, responsible, and compassionate individuals.",
+        "We value the strong partnership between parents and teachers, as together we build the foundation for lifelong learning and success. I kindly remind all students and parents that punctuality, regular attendance, and respect for school rules are essential for a smooth and positive learning environment.",
+        "Let us continue to work hand in hand to create a nurturing yet disciplined atmosphere where every child can grow, explore, and achieve their best."
+      ]
+    },
+    {
+      role: "Cyberjaya Branch",
+      header: "Message from Cyberjaya Branch Principal",
+      name: "Vithiya Shankari A/P Jayagobi",
+      title: "Principal, Daace Academy",
+      text: [
+        "Warm greetings to our dear students, parents, and well-wishers.",
+        "At Daace Academy, we see every child as a shining light — full of dreams, curiosity, and potential. It is our heartfelt mission to guide each child with love, patience, and care, helping them discover their strengths and build confidence in who they are.",
+        "Education at Daace Academy goes beyond books and exams. We teach our children to be kind, respectful, and responsible — values that shape not only a bright student, but also a beautiful human being. We believe that discipline and compassion must walk hand in hand to create true success.",
+        "To our parents, thank you for trusting us with your children’s growth. Your support and cooperation mean everything. Together, we can nurture young hearts and minds to dream big, work hard, and always do good."
+      ]
+    },
+    {
+      role: "Brickfields TELS",
+      header: "Message from Brickfields TELS Principal",
+      name: "Principal",
+      title: "Tadika Erudite Little Stars",
+      text: [
+        "Dear Parents and Little Ones, Warm greetings to all of you.",
+        "At Tadika Erudite Little Stars, every child who walks through our doors becomes a part of our family. As a principal, and as a mother at heart, I see each child as a precious little soul — unique, innocent, and full of dreams. It brings me so much joy to see their smiles each morning, their laughter filling our classrooms, and their eyes sparkle as they learn something new.",
+        "We believe that education in the early years is about love, care, and guidance. Our teachers nurture every child gently, helping them grow in confidence, kindness, and curiosity. We hold their little hands not only to teach, but to comfort, encourage, and celebrate every small achievement.",
+        "To our dear parents — thank you for trusting us with your children. Your love and support make our work meaningful. Together, we will continue to create a safe, joyful, and caring environment where every child feels loved, valued, and free to be themselves."
+      ]
+    }
+  ];
+
+  const [activeTab, setActiveTab] = React.useState(0);
+
+  return (
+    <section id="leadership" style={{ padding: '6rem 0', background: 'var(--bg-subtle)' }}>
+      <div className="container">
+        <div className="section-title">
+          <h2>Voices of Leadership</h2>
+          <p>Inspiring words from the visionaries guiding our students.</p>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
+          {/* Tabs */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '1rem',
+            background: 'var(--glass)',
+            padding: '0.5rem',
+            borderRadius: '50px',
+            border: '1px solid var(--glass-border)'
+          }}>
+            {messages.map((msg, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(idx)}
+                style={{
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '30px',
+                  border: 'none',
+                  background: activeTab === idx ? 'var(--primary)' : 'transparent',
+                  color: activeTab === idx ? 'white' : 'var(--text-light)',
+                  fontWeight: activeTab === idx ? '600' : '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  fontSize: '0.95rem'
+                }}
+              >
+                {msg.role}
+              </button>
+            ))}
+          </div>
+
+          {/* Content Card */}
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="glass-card"
+            style={{
+              padding: '3rem',
+              width: '100%',
+              maxWidth: '900px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2rem',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
+            {/* Background Decoration */}
+            <div style={{
+              position: 'absolute',
+              top: '-10%',
+              right: '-5%',
+              opacity: 0.03,
+              transform: 'rotate(15deg)',
+              pointerEvents: 'none'
+            }}>
+              <img src={logo} alt="Watermark" style={{ width: '300px', filter: 'grayscale(1)' }} />
+            </div>
+
+            <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              <div style={{ flex: 1, minWidth: '300px' }}>
+                <Quote size={48} style={{ color: 'var(--secondary)', marginBottom: '1.5rem', opacity: 0.5 }} />
+                <h3 style={{ fontSize: '1.8rem', color: 'var(--primary)', marginBottom: '1.5rem' }}>{messages[activeTab].header}</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {messages[activeTab].text.map((paragraph, i) => (
+                    <p key={i} style={{ color: 'var(--text-dark)', lineHeight: '1.8', fontSize: '1.05rem' }}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <div style={{ marginTop: '2.5rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem' }}>
+                  <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: '700' }}>{messages[activeTab].name}</h4>
+                  {messages[activeTab].title && (
+                    <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', fontStyle: 'italic' }}>{messages[activeTab].title}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Optional Right Side Image/Brand Element for Desktop */}
+              <div style={{
+                flexShrink: 0,
+                width: '200px',
+                height: '200px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '4px solid var(--glass-border)',
+                background: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+              }}>
+                <img src={logo} alt="Erudite Crest" style={{ width: '80%', height: 'auto' }} />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -365,58 +532,81 @@ const Programs = () => {
   );
 };
 
-const Activity = () => (
-  <section id="activity" style={{ background: 'var(--bg-subtle)' }}>
-    <div className="container">
-      <div className="section-title">
-        <h2>Holistic Activities</h2>
-        <p>Beyond the classroom - fostering physical and creative growth.</p>
-      </div>
-      <div className="bento-grid">
-        {[
-          { title: "Futsal", desc: "Developing teamwork and coordination on the field.", icon: "⚽", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/862d61be-2dee-4b59-8324-18d6910a4ac8.JPG", span: "large" },
-          { title: "Badminton", desc: "Precision and agility through active play.", icon: "🏸", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/5df84bde-2cfc-40f8-bfde-514e65fc51ca.JPG", span: "medium" },
-          { title: "Pool", desc: "Focus and strategic thinking in every shot.", icon: "🎱", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/804daac5-81f9-4570-8093-496c6ca58942.JPG", span: "small" },
-          { title: "Creative Arts", desc: "Expressing imagination through various media.", icon: "🎨", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/1ee51611-861f-4912-b382-86def8ad707d.JPG", span: "medium" },
-          { title: "Music & Movement", desc: "Exploring rhythm and self-expression.", icon: "🎵", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/dejembe-drum-natural-500x500.webp", span: "small" },
-          { title: "Special Support", desc: "Personalized care and developmental health.", icon: "❤️", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/PHOTO-2024-10-11-10-44-20.jpg", span: "medium" }
-        ].map((act, i) => (
-          <BentoCard
-            key={i}
-            span={act.span}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-          >
-            <div style={{ height: '100%', overflow: 'hidden', position: 'relative' }}>
-              <img src={act.image} alt={act.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to top, rgba(26,54,93,0.95), transparent 60%)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
-                padding: act.span === 'large' ? '2.5rem' : '1.5rem'
-              }}>
-                <div style={{ fontSize: act.span === 'large' ? '3rem' : '2rem', marginBottom: '0.5rem' }}>{act.icon}</div>
-                <h3 style={{
-                  color: 'white',
-                  marginBottom: '0.5rem',
-                  fontSize: act.span === 'large' ? '2rem' : '1.2rem'
-                }}>{act.title}</h3>
-                {act.span !== 'small' && (
-                  <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', margin: 0 }}>{act.desc}</p>
-                )}
+const Activity = () => {
+  const activities = [
+    { title: "Futsal", icon: "⚽", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/4b73b0a4-e214-45c5-95f3-38ad9cfb9f37.JPG" },
+    { title: "Pool", icon: "🎱", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/IMG_7479.jpg" }, // Note: This might be Badminton based on previous logical deduction, but using extracted data.
+    { title: "Carrom", icon: "🎯", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/1ee51611-861f-4912-b382-86def8ad707d.JPG" },
+    { title: "Chess", icon: "♟️", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/b38cfce9-2c66-4ebc-b29f-a58fdb75da95.JPG" },
+    { title: "Team Building", icon: "🤝", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/478264c9-994b-467c-86a0-723f1e751cc7.JPG" },
+    { title: "Zumba", icon: "💃", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/6c8140df-6add-47b2-9bb7-7f9960cd5530.JPG" },
+    { title: "Music Studio", icon: "🎤", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/DSC00034.JPG" },
+    { title: "Public Speaking", icon: "🗣️", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/331A0192.JPG" },
+    { title: "Dance", icon: "🩰", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/IMG_4693.jpg" },
+    { title: "Djembe Training", icon: "🥁", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/dejembe-drum-natural-500x500.webp" },
+    { title: "Culture Drama", icon: "🎭", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/DSC00028.JPG" },
+    { title: "Yoga Meditation", icon: "🧘", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/9ea491ef-41e1-4bff-8f74-65490249e6b0.JPG" },
+    { title: "Bowling", icon: "🎳", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/60-10-24250940.webp" },
+    { title: "Art & Craft", icon: "🎨", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/0ea411a8-c1fa-4ac5-9ed9-31ac9ee9d08b.JPG" },
+    { title: "Personal Care", icon: "🚿", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/8a548e83-01c5-4bf7-aba0-5d63f8ac9dda.JPG" },
+    { title: "Competitions", icon: "🏆", image: "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/8a548e83-01c5-4bf7-aba0-5d63f8ac9dda.JPG" }
+  ];
+
+  return (
+    <section id="activity" style={{ background: 'var(--bg-subtle)' }}>
+      <div className="container">
+        <div className="section-title">
+          <h2>Holistic Activities</h2>
+          <p>Beyond the classroom - fostering physical and creative growth.</p>
+        </div>
+        <div className="bento-grid">
+          {activities.map((act, i) => (
+            <BentoCard
+              key={i}
+              span="small"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+            >
+              <div style={{ height: '100%', overflow: 'hidden', position: 'relative' }}>
+                <img src={act.image} alt={act.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(15,23,42,0.95), transparent 60%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  padding: '1.5rem',
+                  gap: '0.5rem'
+                }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '12px',
+                    background: 'rgba(255,255,255,0.1)',
+                    backdropFilter: 'blur(4px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.2rem',
+                    marginBottom: '0.25rem'
+                  }}>
+                    {act.icon}
+                  </div>
+                  <div>
+                    <h3 style={{ color: 'white', margin: 0, fontSize: '1.1rem', fontWeight: '600' }}>{act.title}</h3>
+                  </div>
+                </div>
               </div>
-            </div>
-          </BentoCard>
-        ))}
+            </BentoCard>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Gallery = () => {
   const images = [
@@ -605,56 +795,56 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{ background: 'var(--primary)', color: 'white' }}>
+    <section id="contact" style={{ background: 'var(--bg-subtle)' }}>
       <div className="container">
         <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem' }}>
           <div>
-            <h2 style={{ color: 'white', fontSize: '2.5rem', marginBottom: '1.5rem' }}>Visit Our Campus</h2>
-            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.7)', marginBottom: '3rem' }}>We'd love to show you around and discuss how we can support your child's journey.</p>
+            <h2 style={{ color: 'var(--primary)', fontSize: '2.5rem', marginBottom: '1.5rem' }}>Visit Our Campus</h2>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-light)', marginBottom: '3rem' }}>We'd love to show you around and discuss how we can support your child's journey.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                <div style={{ background: 'rgba(255,255,255,0.1)', padding: '0.75rem', borderRadius: '12px' }}><MapPin /></div>
+                <div style={{ background: 'var(--bg-feature-blue)', padding: '0.75rem', borderRadius: '12px' }}><MapPin style={{ color: 'var(--primary)' }} /></div>
                 <div>
-                  <h4 style={{ color: 'white' }}>Location</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>80, Jalan Thamby Abdullah, Brickfields, KL</p>
+                  <h4 style={{ color: 'var(--text-dark)' }}>Location</h4>
+                  <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>80, Jalan Thamby Abdullah, Brickfields, KL</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                <div style={{ background: 'rgba(255,255,255,0.1)', padding: '0.75rem', borderRadius: '12px' }}><Phone /></div>
+                <div style={{ background: 'var(--bg-feature-orange)', padding: '0.75rem', borderRadius: '12px' }}><Phone style={{ color: 'var(--secondary)' }} /></div>
                 <div>
-                  <h4 style={{ color: 'white' }}>Call Us</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>+60 3-1234 5678</p>
+                  <h4 style={{ color: 'var(--text-dark)' }}>Call Us</h4>
+                  <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>+60 3-1234 5678</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                <div style={{ background: 'rgba(255,255,255,0.1)', padding: '0.75rem', borderRadius: '12px' }}><Mail /></div>
+                <div style={{ background: 'var(--bg-feature-purple)', padding: '0.75rem', borderRadius: '12px' }}><Mail style={{ color: 'var(--vibrant-purple)' }} /></div>
                 <div>
-                  <h4 style={{ color: 'white' }}>Email</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>hello@eruditeinternational.com</p>
+                  <h4 style={{ color: 'var(--text-dark)' }}>Email</h4>
+                  <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>hello@eruditeinternational.com</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="glass-card" style={{ background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}>
-            <h3 style={{ color: 'white', marginBottom: '2rem' }}>Request Information</h3>
+          <div className="glass-card" style={{ background: 'var(--glass)', borderColor: 'var(--glass-border)', padding: '2rem' }}>
+            <h3 style={{ color: 'var(--text-dark)', marginBottom: '2rem' }}>Request Information</h3>
             {submitted ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: 'center', padding: '3rem 0' }}>
                 <Trophy size={64} style={{ color: 'var(--secondary)', marginBottom: '1.5rem' }} />
-                <h3>Thank You!</h3>
-                <p>Your inquiry has been sent. We'll contact you shortly.</p>
+                <h3 style={{ color: 'var(--text-dark)' }}>Thank You!</h3>
+                <p style={{ color: 'var(--text-light)' }}>Your inquiry has been sent. We'll contact you shortly.</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <input required name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Full Name" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '10px', color: 'white' }} />
-                <input required name="email" value={formData.email} onChange={handleChange} type="email" placeholder="Email Address" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '10px', color: 'white' }} />
-                <select name="program" value={formData.program} onChange={handleChange} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '10px', color: 'white' }}>
+                <input required name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Full Name" style={{ background: 'var(--bg-cream)', border: '1px solid var(--glass-border)', padding: '1rem', borderRadius: '10px', color: 'var(--text-dark)' }} />
+                <input required name="email" value={formData.email} onChange={handleChange} type="email" placeholder="Email Address" style={{ background: 'var(--bg-cream)', border: '1px solid var(--glass-border)', padding: '1rem', borderRadius: '10px', color: 'var(--text-dark)' }} />
+                <select name="program" value={formData.program} onChange={handleChange} style={{ background: 'var(--bg-cream)', border: '1px solid var(--glass-border)', padding: '1rem', borderRadius: '10px', color: 'var(--text-dark)' }}>
                   <option value="Select Program">Select Program</option>
                   <option value="Pre-Primary">Pre-Primary</option>
                   <option value="Lower Primary">Lower Primary</option>
                   <option value="Upper Primary">Upper Primary</option>
                   <option value="Secondary / IGCSE">Secondary / IGCSE</option>
                 </select>
-                <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" rows="4" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '10px', color: 'white' }}></textarea>
+                <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" rows="4" style={{ background: 'var(--bg-cream)', border: '1px solid var(--glass-border)', padding: '1rem', borderRadius: '10px', color: 'var(--text-dark)' }}></textarea>
                 <button type="submit" className="btn btn-secondary">Send Message</button>
               </form>
             )}
@@ -738,6 +928,7 @@ export default function App() {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <Features />
+      <LeadershipMessages />
       <Programs />
       <Activity />
       <Gallery />
