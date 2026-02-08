@@ -544,7 +544,7 @@ const Contact = () => {
     e.preventDefault();
 
     // Construct WhatsApp message
-    const whatsappNumber = "60102809681";
+    const whatsappNumber = "60103655942";
     const text = `*New Inquiry via Website*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Program:* ${formData.program}%0A*Message:* ${formData.message}`;
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${text}&type=phone_number&app_absent=0`;
 
@@ -645,7 +645,7 @@ const Footer = () => (
 
 const WhatsAppButton = () => (
   <motion.a
-    href="https://api.whatsapp.com/send/?phone=60102809681&text&type=phone_number&app_absent=0"
+    href="https://api.whatsapp.com/send/?phone=60103655942&text&type=phone_number&app_absent=0"
     target="_blank"
     rel="noopener noreferrer"
     initial={{ scale: 0, opacity: 0 }}
