@@ -117,7 +117,25 @@ const Navbar = () => {
         {/* Desktop Nav Links - centered */}
         <div className="desktop-nav" style={{ display: 'flex', gap: '2rem', fontWeight: '600', flex: '1', justifyContent: 'center', overflow: 'hidden' }}>
           {navLinks.map(link => (
-            <span key={link.id} onClick={() => scrollTo(link.id)} style={{ color: 'var(--primary)', textDecoration: 'none', cursor: 'pointer', fontSize: '1rem', transition: 'all 0.2s', opacity: 0.8, whiteSpace: 'nowrap', letterSpacing: '0.01em' }} onMouseEnter={(e) => { e.target.style.opacity = 1; e.target.style.transform = 'translateY(-1px)'; }} onMouseLeave={(e) => { e.target.style.opacity = 0.8; e.target.style.transform = 'translateY(0)'; }}>{link.label}</span>
+            <span
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className={link.id === 'app' ? 'glitter-text' : ''}
+              style={{
+                color: 'var(--primary)',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                transition: 'all 0.2s',
+                opacity: link.id === 'app' ? 1 : 0.8,
+                whiteSpace: 'nowrap',
+                letterSpacing: '0.01em'
+              }}
+              onMouseEnter={(e) => { if (link.id !== 'app') e.target.style.opacity = 1; e.target.style.transform = 'translateY(-1px)'; }}
+              onMouseLeave={(e) => { if (link.id !== 'app') e.target.style.opacity = 0.8; e.target.style.transform = 'translateY(0)'; }}
+            >
+              {link.label}
+            </span>
           ))}
         </div>
 
@@ -140,7 +158,7 @@ const Navbar = () => {
               <X size={32} />
             </button>
             {navLinks.map(link => (
-              <span key={link.id} onClick={() => scrollTo(link.id)}>{link.label}</span>
+              <span key={link.id} onClick={() => (scrollTo(link.id), setIsOpen(false))} className={link.id === 'app' ? 'glitter-text' : ''}>{link.label}</span>
             ))}
             <button className="btn btn-primary" onClick={() => scrollTo('contact')}>Enroll Now</button>
           </motion.div>

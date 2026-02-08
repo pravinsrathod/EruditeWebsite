@@ -400,3 +400,25 @@ section {
   color: var(--primary);
   cursor: pointer;
 }
+
+.glitter-text {
+  background: linear-gradient(90deg,
+      var(--secondary) 0%,
+      #FFE8B3 25%,
+      var(--secondary) 50%,
+      #FFE8B3 75%,
+      var(--secondary) 100%);
+  background-size: 200% auto;
+  color: transparent !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+  font-weight: 700 !important;
+  display: inline-block;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
