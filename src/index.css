@@ -361,11 +361,12 @@ section {
   }
 
   .nav-brand-text {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
   }
 
-  .nav-container {
-    padding-right: 4rem !important;
+  .nav-sub-text {
+    font-size: 0.5rem !important;
+    letter-spacing: 1px !important;
   }
 }
 

@@ -105,8 +105,11 @@ const Navbar = () => {
       <div className="nav-container" style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
         {/* Logo Section */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 1, minWidth: 0 }} onClick={() => scrollTo('home')}>
-          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '40px' : '50px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease', flexShrink: 0 }} />
-          <h1 className="nav-brand-text" style={{ fontSize: scrolled ? '1.1rem' : '1.25rem', margin: 0, fontWeight: '700', letterSpacing: '1px', transition: 'all 0.3s ease', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Erudite International</h1>
+          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '42px' : '52px', width: 'auto', mixBlendMode: 'multiply', transition: 'all 0.3s ease', flexShrink: 0 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1', transition: 'all 0.3s ease' }}>
+            <h1 className="nav-brand-text" style={{ fontSize: scrolled ? '1.1rem' : '1.35rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', color: 'var(--primary)', textTransform: 'uppercase' }}>Erudite</h1>
+            <span className="nav-sub-text" style={{ fontSize: scrolled ? '0.55rem' : '0.65rem', fontWeight: '600', letterSpacing: scrolled ? '1.5px' : '2px', color: 'var(--secondary)', textTransform: 'uppercase', marginTop: '2px' }}>International</span>
+          </div>
         </div>
 
         {/* Desktop Nav Links - centered */}
@@ -541,7 +544,10 @@ const Footer = () => (
           <div style={{ background: 'white', padding: '0.5rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
             <img src={logo} alt="Erudite Logo" style={{ height: '40px', width: 'auto' }} />
           </div>
-          <h1 style={{ color: 'white', fontSize: '1.5rem', margin: 0, fontWeight: '700', letterSpacing: '1px' }}>Erudite International</h1>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1' }}>
+            <h1 style={{ color: 'white', fontSize: '1.6rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Erudite</h1>
+            <span style={{ color: 'var(--secondary)', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '3px', textTransform: 'uppercase', marginTop: '3px' }}>International</span>
+          </div>
         </div>
         <div style={{ display: 'flex', gap: '1.5rem' }}>
           <Instagram style={{ cursor: 'pointer', opacity: 0.7 }} />
