@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X } from 'lucide-react';
+import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagram, Facebook, Menu, X, Bell, Smartphone, Calendar, CheckCircle } from 'lucide-react';
 import './index.css';
 import logo from './assets/logo.jpg';
+import appMockup from '/Users/pranjalrathod/.gemini/antigravity/brain/9194fa81-fc12-4e8b-a329-8698c996c8c8/edupro_app_mockup_1770535209187.png';
 
 const StaggeredText = ({ text, style, delay = 0 }) => {
   const words = text.split(' ');
@@ -79,6 +80,7 @@ const Navbar = () => {
     { id: 'programs', label: 'Programs' },
     { id: 'activity', label: 'Activity' },
     { id: 'gallery', label: 'Gallery' },
+    { id: 'app', label: 'EduPro App' },
     { id: 'branches', label: 'Branches' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -383,6 +385,65 @@ const Gallery = () => {
   );
 };
 
+const EduProApp = () => (
+  <section id="app" style={{ background: '#f8fafc', overflow: 'hidden' }}>
+    <div className="container">
+      <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', background: 'rgba(212, 175, 55, 0.1)', color: 'var(--secondary)', borderRadius: '100px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
+            <Smartphone size={16} /> <span>Now Available</span>
+          </div>
+          <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '1.5rem', lineHeight: '1.1' }}>Stay Connected with <span style={{ color: 'var(--secondary)' }}>EduPro</span></h2>
+          <p style={{ fontSize: '1.1rem', color: '#64748b', marginBottom: '2.5rem' }}>Our multi-tenant parent portal brings your child's educational journey to your fingertips. Download our mobile app on Android and iOS for seamless monitoring.</p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {[
+              { icon: <Bell style={{ color: 'var(--secondary)' }} />, title: "Real-time Notifications", text: "Instant alerts for school announcements, circulars, and events." },
+              { icon: <Calendar style={{ color: 'var(--secondary)' }} />, title: "Attendance & Schedule", text: "Monitor your child's daily attendance and stay updated on school timetables." },
+              { icon: <CheckCircle style={{ color: 'var(--secondary)' }} />, title: "Homework Monitoring", text: "View and track daily assignments and homework progress directly." }
+            ].map((item, i) => (
+              <div key={i} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
+                <div style={{ background: 'white', padding: '0.75rem', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>{item.icon}</div>
+                <div>
+                  <h4 style={{ color: 'var(--primary)', marginBottom: '0.25rem' }}>{item.title}</h4>
+                  <p style={{ color: '#64748b', fontSize: '0.95rem' }}>{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '3rem', flexWrap: 'wrap' }}>
+            <div style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '160px' }}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style={{ width: '100%' }} />
+            </div>
+            <div style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '180px' }}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style={{ width: '100%' }} />
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true }}
+          style={{ position: 'relative' }}
+        >
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '120%', height: '120%', background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0) 70%)', zIndex: -1 }}></div>
+          <img
+            src={appMockup}
+            alt="EduPro App Mockup"
+            style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '32px', boxShadow: '0 30px 60px rgba(0,0,0,0.15)' }}
+          />
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
 const Branches = () => {
   const branches = [
     {
@@ -601,6 +662,7 @@ export default function App() {
       <Programs />
       <Activity />
       <Gallery />
+      <EduProApp />
       <Branches />
       <Contact />
       <Footer />
