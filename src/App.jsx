@@ -417,12 +417,12 @@ const EduProApp = () => (
           </div>
 
           <div style={{ display: 'flex', gap: '1rem', marginTop: '3rem', flexWrap: 'wrap' }}>
-            <div style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '160px' }}>
+            <a href="https://apps.apple.com/app/edupro-ai-study-assistant/id6758233239" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '160px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style={{ width: '100%' }} />
-            </div>
-            <div style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '180px' }}>
+            </a>
+            <a href="https://play.google.com/apps/internaltest/4701022941992181520" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '180px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style={{ width: '100%' }} />
-            </div>
+            </a>
           </div>
         </motion.div>
 
