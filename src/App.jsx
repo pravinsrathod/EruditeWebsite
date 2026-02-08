@@ -635,6 +635,9 @@ const Footer = () => (
       </div>
       <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem' }}>
         <p>&copy; 2026 Erudite International (Tadika Erudite Little Star). All rights reserved.</p>
+        <p style={{ marginTop: '0.5rem' }}>
+          Powered by <a href="https://prowintech.in/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: '600' }}>ProWinTech</a>
+        </p>
       </div>
     </div>
   </footer>
