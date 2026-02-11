@@ -4,6 +4,12 @@ import { BookOpen, Users, Star, Trophy, ArrowRight, Mail, Phone, MapPin, Instagr
 import './index.css';
 import logo from './assets/logo.jpg';
 import appMockup from './assets/edupro_mockup.png';
+import visionMissionImg from './assets/vision-mission.jpg';
+import trackChartImg from './assets/track-chart.jpg';
+import grad1 from './assets/grad-1.jpg';
+import grad2 from './assets/grad-2.jpg';
+import grad3 from './assets/grad-3.jpg';
+import grad4 from './assets/grad-4.jpg';
 
 const StaggeredText = ({ text, style, delay = 0 }) => {
   const words = text.split(' ');
@@ -189,6 +195,168 @@ const LeadershipMessages = () => {
                 <img src={logo} alt="Erudite Crest" style={{ width: '80%', height: 'auto' }} />
               </div>
             </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const VisionMission = () => {
+  return (
+    <section id="vision-mission" style={{ padding: '8rem 0', background: 'var(--bg-cream)', position: 'relative', overflow: 'hidden' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{ position: 'relative' }}
+          >
+            <div style={{
+              position: 'absolute',
+              top: '-20px',
+              left: '-20px',
+              width: '100%',
+              height: '100%',
+              border: '2px solid var(--primary)',
+              borderRadius: '30px',
+              zIndex: 0
+            }}></div>
+            <div style={{ borderRadius: '30px', overflow: 'hidden', position: 'relative', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
+              <img
+                src={visionMissionImg}
+                alt="Students at Erudite"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="section-title" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+              <h2>Vision & Mission</h2>
+              <p>Guiding principles that shape our future leaders.</p>
+            </div>
+
+            <div style={{ marginBottom: '2.5rem' }}>
+              <h3 style={{ color: 'var(--secondary)', fontSize: '1.8rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ width: '40px', height: '2px', background: 'var(--primary)', display: 'block' }}></span>
+                Vision
+              </h3>
+              <p style={{ color: 'var(--text-dark)', lineHeight: '1.8', fontSize: '1.05rem', textAlign: 'justify' }}>
+                Our program is designed to foster social interaction and critical thinking. We aspire to be the leading intellectual and creative hub for meaningful engagement in a world that increasingly demands well-designed objects, communication, systems, technology, and organizations to address social needs effectively.
+              </p>
+            </div>
+
+            <div>
+              <h3 style={{ color: 'var(--secondary)', fontSize: '1.8rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ width: '40px', height: '2px', background: 'var(--primary)', display: 'block' }}></span>
+                Mission
+              </h3>
+              <p style={{ color: 'var(--text-dark)', lineHeight: '1.8', fontSize: '1.05rem', textAlign: 'justify' }}>
+                Our School prepares students to understand, contribute to, and thrive in a rapidly evolving society, fostering a more just and equitable world. We are committed to equipping our students with both the foundational skills of a strong education and the critical competencies necessary for success and leadership in the emerging creative economy. Additionally, we will lead in the creation of practical and theoretical knowledge, empowering individuals to better understand the world and enhance conditions for both local and global communities.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TrackRecord = () => {
+  return (
+    <section id="track-record" style={{ padding: '8rem 0', background: 'linear-gradient(to bottom, var(--bg-cream), var(--bg-gradient-end))' }}>
+      <div className="container">
+        <div className="section-title">
+          <h2>Examination Track Record</h2>
+          <p>"Success doesn't happen overnight, keep your eye on the prize & don't look back"</p>
+        </div>
+
+        {/* Chart Image */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
+          >
+            <img src={trackChartImg} alt="Success Rate Chart" style={{ maxWidth: '100%', width: '600px', display: 'block' }} />
+          </motion.div>
+        </div>
+
+        {/* Stats Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '5rem' }}>
+          {[
+            { label: "Success Rate A/A*", value: "79%", color: "#FFD700", bg: "rgba(255, 215, 0, 0.1)" },
+            { label: "Success Rate A/B", value: "13%", color: "#C0C0C0", bg: "rgba(192, 192, 192, 0.1)" },
+            { label: "Success Rate C", value: "11%", color: "#CD7F32", bg: "rgba(205, 127, 50, 0.1)" },
+            { label: "Cambridge IGCSE 2021", value: "Top in World", color: "#4facfe", bg: "rgba(79, 172, 254, 0.1)" },
+            { label: "Cambridge Exam 2022", value: "Top in Malaysia", color: "#00f2fe", bg: "rgba(0, 242, 254, 0.1)" }
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="glass-card"
+              style={{
+                padding: '2rem',
+                textAlign: 'center',
+                borderTop: `4px solid ${stat.color}`,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <h3 style={{ fontSize: '2.5rem', fontWeight: '800', color: stat.color, marginBottom: '0.5rem', lineHeight: 1.2 }}>{stat.value}</h3>
+              <p style={{ color: 'var(--text-light)', fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Content & Context */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h3 style={{ fontSize: '1.8rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: '700' }}>Familiarising with Excellence</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--text-dark)', lineHeight: '1.8', fontSize: '1.05rem', textAlign: 'justify' }}>
+              <p>When it comes to performing well in our exams, studying and revising are the first things that come to mind. Familiarising ourselves with the examination system is also a key factor in achieving great results.</p>
+              <p>At Erudite Academy, we, as students, can experience the environment and system before the actual IGCSE examination. Tables are separated and arranged in rows during the term or mock examinations. Each student would have their specific seat allocated in the hall.</p>
+              <p>Examination rules, such as arriving early and no communication between candidates, are set. Invigilators are assigned to each paper. Besides written exams, oral and listening exams for the language subjects, and practical exams for subjects such as ICT are also held.</p>
+              <div style={{ background: 'var(--bg-feature-blue)', padding: '1.5rem', borderRadius: '16px', borderLeft: '4px solid var(--secondary)', marginTop: '1rem' }}>
+                <p style={{ margin: 0, fontStyle: 'italic', fontWeight: '500', color: 'var(--primary)' }}>"The purpose of these actions is to allow students to become familiarised with the environment and system of the IGCSE examination. Here, students can be fully prepared in all areas, preventing us from getting caught off guard."</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}
+          >
+            {[grad1, grad2, grad3, grad4].map((img, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '3/2', width: '100%', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
+              >
+                <img src={img} alt="Graduation" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>
@@ -522,7 +690,7 @@ const Programs = () => {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,54,93,0.9), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '2.5rem' }}>
                 <h3 style={{ color: 'white', marginBottom: '0.75rem', fontSize: '1.8rem' }}>{p.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '1.5rem', fontSize: '1rem', maxWidth: '400px' }}>{p.desc}</p>
-                <button className="btn btn-secondary" style={{ alignSelf: 'flex-start', padding: '0.75rem 1.5rem' }} onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>Track Record</button>
+                <button className="btn btn-secondary" style={{ alignSelf: 'flex-start', padding: '0.75rem 1.5rem' }} onClick={() => document.getElementById('track-record').scrollIntoView({ behavior: 'smooth' })}>Track Record</button>
               </div>
             </motion.div>
           ))}
@@ -927,9 +1095,11 @@ export default function App() {
     <div>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
+      <VisionMission />
       <Features />
       <LeadershipMessages />
       <Programs />
+      <TrackRecord />
       <Activity />
       <Gallery />
       <EduProApp />
