@@ -325,34 +325,35 @@ const TrackRecord = () => {
         </div>
 
         {/* Content & Context */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}
           >
-            <h3 style={{ fontSize: '1.8rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: '700' }}>Familiarising with Excellence</h3>
+            <h3 style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: '700' }}>Familiarising with Excellence</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--text-dark)', lineHeight: '1.8', fontSize: '1.05rem', textAlign: 'justify' }}>
               <p>When it comes to performing well in our exams, studying and revising are the first things that come to mind. Familiarising ourselves with the examination system is also a key factor in achieving great results.</p>
               <p>At Erudite Academy, we, as students, can experience the environment and system before the actual IGCSE examination. Tables are separated and arranged in rows during the term or mock examinations. Each student would have their specific seat allocated in the hall.</p>
               <p>Examination rules, such as arriving early and no communication between candidates, are set. Invigilators are assigned to each paper. Besides written exams, oral and listening exams for the language subjects, and practical exams for subjects such as ICT are also held.</p>
-              <div style={{ background: 'var(--bg-feature-blue)', padding: '1.5rem', borderRadius: '16px', borderLeft: '4px solid var(--secondary)', marginTop: '1rem' }}>
+              <div style={{ background: 'var(--bg-feature-blue)', padding: '1.5rem', borderRadius: '16px', borderLeft: '4px solid var(--secondary)', marginTop: '1rem', textAlign: 'left' }}>
                 <p style={{ margin: 0, fontStyle: 'italic', fontWeight: '500', color: 'var(--primary)' }}>"The purpose of these actions is to allow students to become familiarised with the environment and system of the IGCSE examination. Here, students can be fully prepared in all areas, preventing us from getting caught off guard."</p>
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}
           >
             {[grad1, grad2, grad3, grad4].map((img, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.05 }}
-                style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '3/2', width: '100%', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
+                whileHover={{ scale: 1.02 }}
+                style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '3/2', width: '100%', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}
               >
                 <img src={img} alt="Graduation" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
@@ -1095,14 +1096,14 @@ export default function App() {
     <div>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
+      <TrackRecord />
       <VisionMission />
       <Features />
-      <LeadershipMessages />
       <Programs />
-      <TrackRecord />
+      <LeadershipMessages />
+      <EduProApp />
       <Activity />
       <Gallery />
-      <EduProApp />
       <Branches />
       <Contact />
       <Footer />
