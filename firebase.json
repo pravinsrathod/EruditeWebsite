@@ -1,5 +1,6 @@
 {
     "hosting": {
+        "site": "erudite-public",
         "public": "dist",
         "ignore": [
             "firebase.json",
