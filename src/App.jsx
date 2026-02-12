@@ -294,9 +294,9 @@ const TrackRecord = () => {
         {/* Stats Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '5rem' }}>
           {[
-            { label: "Success Rate A/A*", value: "79%", color: "#FFD700", bg: "rgba(255, 215, 0, 0.1)" },
-            { label: "Success Rate A/B", value: "13%", color: "#C0C0C0", bg: "rgba(192, 192, 192, 0.1)" },
-            { label: "Success Rate C", value: "11%", color: "#CD7F32", bg: "rgba(205, 127, 50, 0.1)" },
+            { label: "Success Rate A/A*", value: "81%", color: "#FFD700", bg: "rgba(255, 215, 0, 0.1)" },
+            { label: "Success Rate B", value: "11%", color: "#C0C0C0", bg: "rgba(192, 192, 192, 0.1)" },
+            { label: "Success Rate C", value: "8%", color: "#CD7F32", bg: "rgba(205, 127, 50, 0.1)" },
             { label: "Cambridge IGCSE 2021", value: "Top in World", color: "#4facfe", bg: "rgba(79, 172, 254, 0.1)" },
             { label: "Cambridge Exam 2022", value: "Top in Malaysia", color: "#00f2fe", bg: "rgba(0, 242, 254, 0.1)" }
           ].map((stat, i) => (
