@@ -62,9 +62,9 @@ const LeadershipMessages = () => {
     },
     {
       role: "Cyberjaya Branch",
-      header: "Message from Cyberjaya Branch Principal",
-      name: "Vithiya Shankari A/P Jayagobi",
-      title: "Principal, Daace Academy",
+      header: "Message from Cyberjaya Branch Asst Academic Director",
+      name: "Vishnu Versha a/l Narayanan",
+      title: "Asst Academic Director",
       text: [
         "Warm greetings to our dear students, parents, and well-wishers.",
         "At Daace Academy, we see every child as a shining light — full of dreams, curiosity, and potential. It is our heartfelt mission to guide each child with love, patience, and care, helping them discover their strengths and build confidence in who they are.",
@@ -437,8 +437,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         border: '1px solid var(--glass-border)',
         borderRadius: '50px',
         boxShadow: scrolled ? '0 10px 40px rgba(0,0,0,0.1)' : '0 5px 20px rgba(0,0,0,0.05)',
-        transition: 'all 0.3s ease',
-        border: '1px solid rgba(255,255,255,0.3)'
+        transition: 'all 0.3s ease'
       }}
     >
       <div className="nav-container" style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
