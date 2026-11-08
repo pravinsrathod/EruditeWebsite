@@ -31,7 +31,7 @@ const StaggeredText = ({ text, style, delay = 0 }) => {
         >
           {word}
         </motion.span>
-      ))}
+      )).reduce((acc, el, i) => (i === 0 ? [el] : [...acc, ' ', el]), [])}
     </h1>
   );
 };
@@ -157,7 +157,7 @@ const LeadershipMessages = () => {
               transform: 'rotate(15deg)',
               pointerEvents: 'none'
             }}>
-              <img src={logo} alt="Watermark" style={{ width: '300px', filter: 'grayscale(1)' }} />
+              <img src={logo} alt="" loading="lazy" decoding="async" style={{ width: '300px', filter: 'grayscale(1)' }} />
             </div>
 
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
@@ -193,7 +193,7 @@ const LeadershipMessages = () => {
                 justifyContent: 'center',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
               }}>
-                <img src={logo} alt="Erudite Crest" style={{ width: '80%', height: 'auto' }} />
+                <img src={logo} alt="Erudite International school crest" loading="lazy" decoding="async" style={{ width: '80%', height: 'auto' }} />
               </div>
             </div>
           </motion.div>
@@ -228,7 +228,9 @@ const VisionMission = () => {
             <div style={{ borderRadius: '30px', overflow: 'hidden', position: 'relative', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
               <img
                 src={visionMissionImg}
-                alt="Students at Erudite"
+                alt="Students at Erudite International"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
@@ -288,7 +290,7 @@ const TrackRecord = () => {
             viewport={{ once: true }}
             style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
           >
-            <img src={trackChartImg} alt="Success Rate Chart" style={{ maxWidth: '100%', width: '600px', display: 'block' }} />
+            <img src={trackChartImg} alt="Erudite International Cambridge IGCSE results chart: 81% A/A*, 11% B, 8% C" loading="lazy" decoding="async" style={{ maxWidth: '100%', width: '600px', display: 'block' }} />
           </motion.div>
         </div>
 
@@ -319,7 +321,7 @@ const TrackRecord = () => {
                 alignItems: 'center'
               }}
             >
-              <h3 style={{ fontSize: '2.5rem', fontWeight: '800', color: stat.color, marginBottom: '0.5rem', lineHeight: 1.2 }}>{stat.value}</h3>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', fontWeight: '800', color: stat.color, marginBottom: '0.5rem', lineHeight: 1.2 }}>{stat.value}</p>
               <p style={{ color: 'var(--text-light)', fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.label}</p>
             </motion.div>
           ))}
@@ -356,7 +358,7 @@ const TrackRecord = () => {
                 whileHover={{ scale: 1.02 }}
                 style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '3/2', width: '100%', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}
               >
-                <img src={img} alt="Graduation" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={img} alt={`Erudite International graduation ceremony, photo ${i + 1}`} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
             ))}
           </motion.div>
@@ -444,9 +446,9 @@ const Navbar = ({ theme, toggleTheme }) => {
       <div className="nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Logo Section */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 1, minWidth: 0 }} onClick={() => scrollTo('home')}>
-          <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '42px' : '52px', width: 'auto', mixBlendMode: theme === 'dark' ? 'screen' : 'multiply', filter: theme === 'dark' ? 'invert(1) brightness(1.5)' : 'none', transition: 'all 0.3s ease', flexShrink: 0 }} />
+          <img src={logo} alt="Erudite International logo" style={{ height: scrolled ? '42px' : '52px', width: 'auto', mixBlendMode: theme === 'dark' ? 'screen' : 'multiply', filter: theme === 'dark' ? 'invert(1) brightness(1.5)' : 'none', transition: 'all 0.3s ease', flexShrink: 0 }} />
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1', transition: 'all 0.3s ease' }}>
-            <h1 className="nav-brand-text" style={{ fontSize: scrolled ? '1.1rem' : '1.35rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', color: 'var(--primary)', textTransform: 'uppercase' }}>Erudite</h1>
+            <span className="nav-brand-text" style={{ display: 'block', fontFamily: "'Playfair Display', serif", fontSize: scrolled ? '1.1rem' : '1.35rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', color: 'var(--primary)', textTransform: 'uppercase' }}>Erudite</span>
             <span className="nav-sub-text" style={{ fontSize: scrolled ? '0.55rem' : '0.65rem', fontWeight: '600', letterSpacing: scrolled ? '1.5px' : '2px', color: 'var(--secondary)', textTransform: 'uppercase', marginTop: '2px' }}>International</span>
           </div>
         </div>
@@ -700,7 +702,7 @@ const Programs = () => {
               style={{ overflow: 'hidden', borderRadius: '32px', position: 'relative', height: '350px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', border: '4px solid white' }}
             >
               <div style={{ position: 'absolute', inset: 0, padding: '4px', background: p.color, zIndex: -1 }}></div>
-              <img src={p.image} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={p.image} alt={`${p.title} students at Erudite International`} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,54,93,0.9), transparent)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '2.5rem' }}>
                 <h3 style={{ color: 'white', marginBottom: '0.75rem', fontSize: '1.8rem' }}>{p.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '1.5rem', fontSize: '1rem', maxWidth: '400px' }}>{p.desc}</p>
@@ -752,7 +754,7 @@ const Activity = () => {
               transition={{ delay: i * 0.05 }}
             >
               <div style={{ height: '100%', overflow: 'hidden', position: 'relative' }}>
-                <img src={act.image} alt={act.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={act.image} alt={`${act.title} activity at Erudite International`} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{
                   position: 'absolute',
                   inset: 0,
@@ -801,6 +803,7 @@ const Gallery = () => {
     "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/7191b0ed-5a50-4365-a91b-2b2b05244f41.JPG",
     "https://img1.wsimg.com/isteam/ip/ecdb1fa4-4a6f-46ed-8a8c-e4b22e0a5edf/09.jpg"
   ];
+  const altTexts = ["Erudite International graduates with teachers on stage at the graduation ceremony", "Congratulations poster: Isabelle Gwenca Fong, Top in the World in Cambridge IGCSE 2021 (Science) and Top in Malaysia Cambridge AS Level 2023 Computer Science", "Secondary students in house T-shirts posing together in a classroom", "Primary pupils in school uniform lined up with their teacher", "Primary pupils in uniform standing together at a school assembly", "Secondary students in school uniform with scarves", "Pre-primary children holding rainbow paper crafts in their classroom", "Students performing a dance on stage at a school event"];
 
   return (
     <section id="gallery">
@@ -816,7 +819,7 @@ const Gallery = () => {
               whileHover={{ scale: 1.02 }}
               style={{ height: '280px', borderRadius: '16px', overflow: 'hidden' }}
             >
-              <img src={img} alt="Gallery" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={img} alt={altTexts[i] || 'Campus life at Erudite International'} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </motion.div>
           ))}
         </div>
@@ -858,10 +861,10 @@ const EduProApp = () => (
 
           <div style={{ display: 'flex', gap: '1rem', marginTop: '3rem', flexWrap: 'wrap' }}>
             <a href="https://apps.apple.com/app/edupro-ai-study-assistant/id6758233239" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '160px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style={{ width: '100%' }} />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download EduPro on the App Store" loading="lazy" decoding="async" style={{ width: '100%' }} />
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.prowin.eduproapp&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '180px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style={{ width: '100%' }} />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get EduPro on Google Play" loading="lazy" decoding="async" style={{ width: '100%' }} />
             </a>
           </div>
         </motion.div>
@@ -875,7 +878,9 @@ const EduProApp = () => (
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '120%', height: '120%', background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0) 70%)', zIndex: -1 }}></div>
           <img
             src={appMockup}
-            alt="EduPro App Mockup"
+            alt="EduPro school app on a phone"
+            loading="lazy"
+            decoding="async"
             style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '32px', boxShadow: '0 30px 60px rgba(0,0,0,0.15)' }}
           />
         </motion.div>
@@ -1043,10 +1048,10 @@ const Footer = () => (
       <div className="flex-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem', marginBottom: '3rem', flexWrap: 'wrap', gap: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ background: 'white', padding: '0.5rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
-            <img src={logo} alt="Erudite Logo" style={{ height: '40px', width: 'auto' }} />
+            <img src={logo} alt="Erudite International logo" loading="lazy" decoding="async" style={{ height: '40px', width: 'auto' }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1' }}>
-            <h1 style={{ color: 'white', fontSize: '1.6rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Erudite</h1>
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', serif", color: 'white', fontSize: '1.6rem', margin: 0, fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', lineHeight: 1.2 }}>Erudite</span>
             <span style={{ color: 'var(--secondary)', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '3px', textTransform: 'uppercase', marginTop: '3px' }}>International</span>
           </div>
         </div>
