@@ -444,7 +444,7 @@ section {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 160px 5% 80px !important; /* Increased padding and decreased horizontal margins for more content space */
+  padding: 130px 5% 50px !important; /* Clears the fixed navbar; keeps the flyer within the first screen */
   gap: 4rem !important;
   width: 100% !important;
   max-width: 1440px !important; /* Cap width for better readability on ultrawide */
@@ -472,6 +472,7 @@ section {
 .hero-image-wrapper {
   position: relative !important;
   display: inline-block !important;
+  max-width: 100% !important;
   transform-style: preserve-3d !important;
   perspective: 1000px !important;
 }
@@ -490,7 +491,11 @@ section {
 }
 
 .hero-image {
-  max-height: 700px !important; /* Increased significantly for desktop impact */
+  display: block !important;
+  height: auto !important;
+  width: auto !important;
+  max-height: min(700px, calc(100vh - 200px)) !important; /* Keep the whole flyer (incl. dates/contact strip) above the fold */
+  min-height: 0 !important;
   max-width: 100% !important;
   object-fit: contain !important;
   border-radius: 32px !important; /* More premium rounded corners */
@@ -511,20 +516,25 @@ section {
   
   .hero-text-container {
     max-width: 800px !important;
-    order: 1 !important;
-    padding: 0 20px !important;
+    order: 2 !important;
+    padding: 0 20px 60px !important;
   }
   
   .hero-image-container {
     justify-content: center !important;
     width: 100% !important;
-    order: 2 !important;
+    order: 1 !important;
     height: auto !important;
-    padding-bottom: 60px !important;
   }
   
   .hero-image {
-    max-height: 550px !important;
+    max-height: 640px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .hero-buttons {
+    justify-content: center !important;
   }
 }
 
@@ -534,7 +544,10 @@ section {
   }
   
   .hero-image {
-    max-height: 400px !important;
+    max-height: none !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    border-radius: 20px !important;
   }
 }
 
@@ -542,10 +555,6 @@ section {
   .hero-content {
     padding-top: 90px !important;
     gap: 2rem !important;
-  }
-
-  .hero-image {
-    max-height: 320px !important;
   }
 }
 

@@ -550,20 +550,12 @@ const Navbar = ({ theme, toggleTheme }) => {
 };
 
 const Hero = () => {
-  const [scrollY, setScrollY] = React.useState(0);
-
-  React.useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%)', position: 'relative', overflow: 'hidden' }}>
+    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%)', position: 'relative', overflow: 'hidden', padding: 0 }}>
       <div className="container hero-content">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="hero-text-container"
         >
@@ -581,7 +573,7 @@ const Hero = () => {
           >
             We foster a nurturing environment where children discover their potential through critical thinking, social interaction, and character building.
           </motion.p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'inherit', flexWrap: 'wrap' }}>
+          <div className="hero-buttons" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <button className="btn btn-primary" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>Book a Virtual Tour</button>
             <button className="btn btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })}>
               Our Programs <ArrowRight size={20} />
@@ -590,58 +582,36 @@ const Hero = () => {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9, x: 50 }}
-          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="hero-image-container"
         >
-          <motion.div 
+          <motion.a
+            href={heroImg}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open the Secondary Admission flyer at full size"
             className="hero-image-wrapper"
-            whileHover={{ 
-              rotateY: 10, 
+            whileHover={{
+              rotateY: 10,
               rotateX: -5,
               scale: 1.02,
               transition: { duration: 0.4 }
             }}
-            style={{ 
-              perspective: '1000px',
-              cursor: 'pointer'
-            }}
+            style={{ perspective: '1000px', cursor: 'zoom-in' }}
           >
             <div className="hero-image-glow" />
-            <img 
-              src={heroImg} 
-              alt="Erudite International Flyer" 
+            <img
+              src={heroImg}
+              alt="Erudite International School flyer: Secondary Admission Open, limited seats. Visit us at PISF 2026, Mid Valley, 14 and 15 November: 100% deposit waived, 50% registration waived, free uniform and 10% sibling discount. WhatsApp +60 10-365 5942, Cyberjaya."
               className="hero-image"
-              loading="lazy"
+              width="1003"
+              height="1240"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
-            
-            {/* Animated Floating Badge */}
-            <motion.div 
-              className="glass-card" 
-              style={{ 
-                position: 'absolute', 
-                bottom: '-25px', 
-                left: '-30px', 
-                padding: '1rem 1.5rem', 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '0.75rem',
-                zIndex: 10,
-                border: '1px solid rgba(255,255,255,0.2)'
-              }}
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-            >
-              <div style={{ background: 'var(--secondary)', color: 'white', padding: '0.6rem', borderRadius: '50%', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}>
-                <Trophy size={20} />
-              </div>
-              <div>
-                <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: '600' }}>Top Rated</h4>
-                <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-light)', opacity: 0.8 }}>International Standard</p>
-              </div>
-            </motion.div>
-          </motion.div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
