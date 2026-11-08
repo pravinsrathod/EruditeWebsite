@@ -10,6 +10,7 @@ import grad1 from './assets/grad-1.jpg';
 import grad2 from './assets/grad-2.jpg';
 import grad3 from './assets/grad-3.jpg';
 import grad4 from './assets/grad-4.jpg';
+import heroImg from './assets/heroSection.jpg';
 
 const StaggeredText = ({ text, style, delay = 0 }) => {
   const words = text.split(' ');
@@ -335,7 +336,7 @@ const TrackRecord = () => {
             <h3 style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: '700' }}>Familiarising with Excellence</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--text-dark)', lineHeight: '1.8', fontSize: '1.05rem', textAlign: 'justify' }}>
               <p>When it comes to performing well in our exams, studying and revising are the first things that come to mind. Familiarising ourselves with the examination system is also a key factor in achieving great results.</p>
-              <p>At Erudite Academy, we, as students, can experience the environment and system before the actual IGCSE examination. Tables are separated and arranged in rows during the term or mock examinations. Each student would have their specific seat allocated in the hall.</p>
+              <p>At Erudite International, we, as students, can experience the environment and system before the actual IGCSE examination. Tables are separated and arranged in rows during the term or mock examinations. Each student would have their specific seat allocated in the hall.</p>
               <p>Examination rules, such as arriving early and no communication between candidates, are set. Invigilators are assigned to each paper. Besides written exams, oral and listening exams for the language subjects, and practical exams for subjects such as ICT are also held.</p>
               <div style={{ background: 'var(--bg-feature-blue)', padding: '1.5rem', borderRadius: '16px', borderLeft: '4px solid var(--secondary)', marginTop: '1rem', textAlign: 'left' }}>
                 <p style={{ margin: 0, fontStyle: 'italic', fontWeight: '500', color: 'var(--primary)' }}>"The purpose of these actions is to allow students to become familiarised with the environment and system of the IGCSE examination. Here, students can be fully prepared in all areas, preventing us from getting caught off guard."</p>
@@ -440,7 +441,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         transition: 'all 0.3s ease'
       }}
     >
-      <div className="nav-container" style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
+      <div className="nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Logo Section */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 1, minWidth: 0 }} onClick={() => scrollTo('home')}>
           <img src={logo} alt="Erudite Logo" style={{ height: scrolled ? '42px' : '52px', width: 'auto', mixBlendMode: theme === 'dark' ? 'screen' : 'multiply', filter: theme === 'dark' ? 'invert(1) brightness(1.5)' : 'none', transition: 'all 0.3s ease', flexShrink: 0 }} />
@@ -450,8 +451,15 @@ const Navbar = ({ theme, toggleTheme }) => {
           </div>
         </div>
 
-        {/* Desktop Nav Links - centered */}
-        <div className="desktop-nav" style={{ display: 'flex', gap: '2rem', fontWeight: '600', flex: '1', justifyContent: 'center', overflow: 'hidden' }}>
+        {/* Desktop Nav Links - Flex-grow to center correctly without overlap */}
+        <div className="desktop-nav" style={{ 
+          display: 'flex', 
+          gap: '2.5rem', 
+          fontWeight: '600', 
+          flex: '1', 
+          justifyContent: 'center',
+          padding: '0 2rem'
+        }}>
           {navLinks.map(link => (
             <span
               key={link.id}
@@ -475,9 +483,8 @@ const Navbar = ({ theme, toggleTheme }) => {
           ))}
         </div>
 
-        {/* Always Visible Button on Desktop - Absolutely Positioned */}
-        {/* Right Side Actions */}
-        <div className="desktop-nav" style={{ position: 'absolute', right: scrolled ? '2rem' : '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        {/* Right Side Actions - Removed absolute positioning to prevent overlap */}
+        <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexShrink: 0 }}>
           <button
             onClick={toggleTheme}
             style={{
@@ -552,17 +559,18 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%)', position: 'relative', overflow: 'hidden', padding: '8rem 0 4rem 0' }}>
-      <div className="container hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%)', position: 'relative', overflow: 'hidden' }}>
+      <div className="container hero-content">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="hero-text-container"
         >
-          <span style={{ color: 'var(--secondary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Welcome to Erudite International</span>
+          <span style={{ color: 'var(--secondary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '0.5rem' }}>Welcome to Erudite International</span>
           <StaggeredText
             text="Empowering Minds Through Quality Education"
-            style={{ fontSize: '4.5rem', lineHeight: '1.1', margin: '1rem 0 2rem 0' }}
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.1', margin: '0.5rem 0 2rem 0' }}
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -581,23 +589,59 @@ const Hero = () => {
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          style={{ position: 'relative', transform: `translateY(${scrollY * 0.15}px)` }}
+          initial={{ opacity: 0, scale: 0.9, x: 50 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="hero-image-container"
         >
-          <div style={{ width: '100%', height: '500px', background: 'url("https://erudite.edu.my/wp-content/uploads/2022/04/3338b0cf-ff94-4ae1-9f36-857320632075.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '30px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}></div>
-          <div className="glass-card" style={{ position: 'absolute', bottom: '-20px', left: '-20px', padding: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ background: 'var(--secondary)', color: 'white', padding: '0.75rem', borderRadius: '50%' }}>
-                <Trophy size={24} />
+          <motion.div 
+            className="hero-image-wrapper"
+            whileHover={{ 
+              rotateY: 10, 
+              rotateX: -5,
+              scale: 1.02,
+              transition: { duration: 0.4 }
+            }}
+            style={{ 
+              perspective: '1000px',
+              cursor: 'pointer'
+            }}
+          >
+            <div className="hero-image-glow" />
+            <img 
+              src={heroImg} 
+              alt="Erudite International Flyer" 
+              className="hero-image"
+              loading="lazy"
+            />
+            
+            {/* Animated Floating Badge */}
+            <motion.div 
+              className="glass-card" 
+              style={{ 
+                position: 'absolute', 
+                bottom: '-25px', 
+                left: '-30px', 
+                padding: '1rem 1.5rem', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '0.75rem',
+                zIndex: 10,
+                border: '1px solid rgba(255,255,255,0.2)'
+              }}
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              <div style={{ background: 'var(--secondary)', color: 'white', padding: '0.6rem', borderRadius: '50%', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}>
+                <Trophy size={20} />
               </div>
               <div>
-                <h4 style={{ margin: 0 }}>Top Rated</h4>
-                <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-light)' }}>International Standard</p>
+                <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: '600' }}>Top Rated</h4>
+                <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-light)', opacity: 0.8 }}>International Standard</p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -846,7 +890,7 @@ const EduProApp = () => (
             <a href="https://apps.apple.com/app/edupro-ai-study-assistant/id6758233239" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '160px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style={{ width: '100%' }} />
             </a>
-            <a href="https://play.google.com/apps/internaltest/4701022941992181520" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '180px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+            <a href="https://play.google.com/store/apps/details?id=com.prowin.eduproapp&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" style={{ padding: '0.5rem', background: '#000', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem', width: '180px', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style={{ width: '100%' }} />
             </a>
           </div>
@@ -879,14 +923,14 @@ const Branches = () => {
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.844111324838!2d101.68027837588636!3d3.1285950535384666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4999ea999999%3A0x7d9f7d9f7d9f7d9f!2sTadika%20Erudite%20Little%20Star!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
     },
     {
-      name: "Erudite Academy, Jalan Puchong",
+      name: "Erudite International, Jalan Puchong",
       address: "G15, Tiara Mutiara 2, Jalan Puchong Bt6, 58200 Kuala Lumpur",
       motto: "Success takes time, we will rise, strong and wise!",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.0!2d101.6!3d3.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49bdc7793d5f%3A0xc3f7a1f81b1d1234!2sErudite%20Academy!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.0!2d101.6!3d3.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49bdc7793d5f%3A0xc3f7a1f81b1d1234!2sErudite%20International!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
     },
     {
-      name: "Erudite Academy, Cyberjaya",
-      address: "Erudite academy, Cyberjaya, 63000 Cyberjaya, Selangor",
+      name: "Erudite International, Cyberjaya",
+      address: "Erudite International, Cyberjaya, 63000 Cyberjaya, Selangor",
       motto: "DAACE: Shaping Minds, Building Futures.",
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.6!2d101.6!3d2.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb9b1d1234567%3A0x1d1d1d1d1d1d1d1d!2sDAACE%20Academy!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
     }
